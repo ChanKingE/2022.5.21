@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      /* 方法一 */
+      .test1 {
+        position: relative;
+      }
+      .test1::after,
+      .test1::before {
+        content: "";
+        width: 100px;
+        height: 1px;
+        position: absolute;
+        background-color: #000;
+        top: 50%;
+      }
+      .test1::after {
+        left: 4rem;
+      }
+      .test1::before {
+        right: 4rem;
+      }
+
+      /* 方法2 不推荐，会形成奇怪的bug*/
+      .line {
+        background-color: #000;
+        width: 30rem;
+        height: 1px;
+        margin: 2rem;
+      }
+      .test2 {
+        width: 4rem;
+        background-color: #fff;
+        margin: 0 auto;
+        margin-top: -0.75rem;
+        text-align: center;
+      }
+
+      /* 方法3  */
+      .test3 {
+        width: 40rem;
+        height: 1px;
+        background-color: #000;
+      }
+      .test3 div {
+        transform: translateY(-50%);
+        display: block;
+        margin: 0 auto;
+        width: 4rem;
+        text-align: center;
+        background-color: #fff;
+      }
+      .test4 {
+        position: relative;
+        width: 1000px;
+        height: 1px;
+        background-color: #000;
+        margin: 10rem;
+      }
+      .test4::before {
+        content: "方法4";
+        display: block;
+        width: 5rem;
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test1">方法1</div>
+    <div class="line"><div class="test2">方法2</div></div>
+    <div class="test3"><div>方法3</div></div>
+    <div class="test4"></div>
+  </body>
+</html>
